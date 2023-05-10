@@ -9,6 +9,10 @@ const ch = canvas.height;
 
 const size = 20;
 
+const colls = cw / 20;
+const rows = ch / 20;
+
+
 function game () {
 
     gameBoard();
@@ -28,7 +32,7 @@ function drawSnake () {
 
 function drawFood () {
     ctx.fillStyle = 'red';
-    ctx.fillRect(Math.round(Math.random() * 32) * 20, Math.round(Math.random() * 32) * 20, size, size);
+    ctx.fillRect(Math.round(Math.random() * colls) * 20, Math.round(Math.random() * rows) * 20, size, size);
 }
 
 game()

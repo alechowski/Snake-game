@@ -12,12 +12,15 @@ const size = 20;
 const columns = cw / 20;
 const rows = ch / 20;
 
+let positionX = 0;
+let positionY = 0;
 
 function game () {
 
     gameBoard();
     drawSnake();
     drawFood();
+    setInterval(move(), 100);
 }
 
 function gameBoard () {
@@ -27,12 +30,24 @@ function gameBoard () {
 
 function drawSnake () {
     ctx.fillStyle = 'lime';
-    ctx.fillRect((cw/2) - size/2,(ch/2) - size/2, size ,size);
+    positionX = size * 16;
+    positionY = size * 16;
+    // ctx.fillRect((cw/2) - size/2,(ch/2) - size/2, size ,size);
+    ctx.fillRect(positionX, positionY, size, size);
 }
 
 function drawFood () {
     ctx.fillStyle = 'red';
-    ctx.fillRect(Math.round(Math.random() * columns) * 20, Math.round(Math.random() * rows) * 20, size, size);
+    let x =  Math.round(Math.random() * columns) * 20
+    let y =  Math.round(Math.random() * rows) * 20
+    ctx.fillRect(x, y, size, size);
+}
+
+function move() {
+    ctx.fillStyle = 'lime';
+    ctx.fillRect(positionX, positionY , size, size);
+    positionY += -1;
 }
 
 game()
+// setInterval(move(), 100);

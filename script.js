@@ -32,7 +32,6 @@ function drawSnake () {
     ctx.fillStyle = 'lime';
     positionX = size * 16;
     positionY = size * 16;
-    // ctx.fillRect((cw/2) - size/2,(ch/2) - size/2, size ,size);
     ctx.fillRect(positionX, positionY, size, size);
 }
 
@@ -50,4 +49,4 @@ function move() {
 }
 
 game()
-// setInterval(move(), 100);
+

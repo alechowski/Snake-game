@@ -29,10 +29,30 @@ function gameBoard () {
 }
 
 function drawSnake () {
-    ctx.fillStyle = 'lime';
+    ctx.fillStyle = 'green';
     positionX = size * 16;
     positionY = size * 16;
     ctx.fillRect(positionX, positionY, size, size);
+
+    ctx.strokeStyle = 'black'
+    ctx.strokeRect(positionX, positionY, size, size);
+
+    ctx.fillStyle = 'lime';
+    positionX = size * 16;
+    positionY = size * 17;
+    ctx.fillRect(positionX, positionY, size, size);
+
+    ctx.strokeStyle = 'black';
+    ctx.strokeRect(positionX, positionY, size, size);
+
+    ctx.fillStyle = 'lime';
+    positionX = size * 16;
+    positionY = size * 18;
+    ctx.fillRect(positionX, positionY, size, size);
+
+    ctx.strokeStyle = 'black';
+    ctx.strokeRect(positionX, positionY, size, size);
+    
 }
 
 function drawFood () {

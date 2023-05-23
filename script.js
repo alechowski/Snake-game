@@ -15,6 +15,9 @@ const rows = ch / 20;
 let positionX = 0;
 let positionY = 0;
 
+const green = 'green';
+const lime = 'lime';
+
 function game () {
 
     gameBoard();
@@ -26,6 +29,15 @@ function game () {
 function gameBoard () {
     ctx.fillStyle = 'black';
     ctx.fillRect(0,0,cw,ch);
+}
+
+function square (x, y, color) {
+
+    ctx.fillStyle = color;
+    positionX = x * size;
+    positionY = y * size;
+    ctx.fillRect(positionX, positionY, size, size);
+
 }
 
 function drawSnake () {

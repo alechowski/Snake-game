@@ -18,7 +18,7 @@ let positionY = 0;
 let boardColor = '#000000';
 let snakeColor = '#35de00';
 let snakeStrokeColor = '#008000';
-let foodColor = 'ff0000';
+let foodColor = '#ff0000';
 
 
 function gameBoard () {

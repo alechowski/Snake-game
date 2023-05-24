@@ -15,19 +15,14 @@ const rows = ch / 20;
 let positionX = 0;
 let positionY = 0;
 
-const green = 'green';
-const lime = 'lime';
+let boardColor = '#000000';
+let snakeColor = '#35de00';
+let snakeStrokeColor = '#008000';
+let foodColor = 'ff0000';
 
-function game () {
-
-    gameBoard();
-    drawSnake();
-    drawFood();
-    setInterval(move(), 100);
-}
 
 function gameBoard () {
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = boardColor;
     ctx.fillRect(0,0,cw,ch);
 }
 
@@ -41,44 +36,51 @@ function square (x, y, color) {
 }
 
 function drawSnake () {
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = snakeColor;
     positionX = size * 16;
     positionY = size * 16;
     ctx.fillRect(positionX, positionY, size, size);
 
-    ctx.strokeStyle = 'black'
+    ctx.strokeStyle = snakeStrokeColor;
     ctx.strokeRect(positionX, positionY, size, size);
 
-    ctx.fillStyle = 'lime';
+    ctx.fillStyle = snakeColor;
     positionX = size * 16;
     positionY = size * 17;
     ctx.fillRect(positionX, positionY, size, size);
 
-    ctx.strokeStyle = 'black';
+    ctx.strokeStyle = snakeStrokeColor;
     ctx.strokeRect(positionX, positionY, size, size);
 
-    ctx.fillStyle = 'lime';
+    ctx.fillStyle = snakeColor;
     positionX = size * 16;
     positionY = size * 18;
     ctx.fillRect(positionX, positionY, size, size);
 
-    ctx.strokeStyle = 'black';
+    ctx.strokeStyle = snakeStrokeColor;
     ctx.strokeRect(positionX, positionY, size, size);
     
 }
 
 function drawFood () {
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = foodColor;
     let x =  Math.round(Math.random() * columns) * 20
     let y =  Math.round(Math.random() * rows) * 20
     ctx.fillRect(x, y, size, size);
 }
 
 function move() {
-    ctx.fillStyle = 'lime';
-    ctx.fillRect(positionX, positionY , size, size);
-    positionY += -1;
+
 }
+
+function game () {
+
+    gameBoard();
+    drawFood();
+    // move();
+    drawSnake();
+}
+
 
 game()
 

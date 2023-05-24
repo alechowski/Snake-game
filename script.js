@@ -20,6 +20,13 @@ let snakeColor = '#35de00';
 let snakeStrokeColor = '#008000';
 let foodColor = '#ff0000';
 
+let snake = [
+    {positionX: 16, positionY:16},
+    {positionX: 16, positionY:17},
+    {positionX: 16, positionY:18},
+    {positionX: 16, positionY:19},
+];
+
 
 function gameBoard () {
     ctx.fillStyle = boardColor;
@@ -33,33 +40,16 @@ function square (x, y, color) {
     positionY = y * size;
     ctx.fillRect(positionX, positionY, size, size);
 
+    ctx.strokeStyle = snakeStrokeColor;
+    ctx.strokeRect(positionX, positionY, size, size);
 }
 
-function drawSnake () {
-    ctx.fillStyle = snakeColor;
-    positionX = size * 16;
-    positionY = size * 16;
-    ctx.fillRect(positionX, positionY, size, size);
+function drawSnake () {  
 
-    ctx.strokeStyle = snakeStrokeColor;
-    ctx.strokeRect(positionX, positionY, size, size);
+   snake.forEach(block => {
+    square(block.positionX, block.positionY, snakeColor);
+   })
 
-    ctx.fillStyle = snakeColor;
-    positionX = size * 16;
-    positionY = size * 17;
-    ctx.fillRect(positionX, positionY, size, size);
-
-    ctx.strokeStyle = snakeStrokeColor;
-    ctx.strokeRect(positionX, positionY, size, size);
-
-    ctx.fillStyle = snakeColor;
-    positionX = size * 16;
-    positionY = size * 18;
-    ctx.fillRect(positionX, positionY, size, size);
-
-    ctx.strokeStyle = snakeStrokeColor;
-    ctx.strokeRect(positionX, positionY, size, size);
-    
 }
 
 function drawFood () {

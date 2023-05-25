@@ -81,9 +81,7 @@ function checkDriection (e) {
     } else {
         return
     }
-    
-    
-   
+
 }
 
 function move() {
@@ -94,16 +92,12 @@ function move() {
 
     if (changeDirection === 37) {
         firstBlock.positionX -= 1;
-        console.log('left');
     } else if (changeDirection === 38) {
         firstBlock.positionY -= 1;
-        console.log('up');
     } else if (changeDirection === 39) {
         firstBlock.positionX += 1;
-        console.log('right');
     } else if (changeDirection === 40) {
         firstBlock.positionY += 1;
-        console.log('down');
     } else {
         return
     }

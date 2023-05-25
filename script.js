@@ -63,14 +63,23 @@ function drawFood () {
 
 
 function checkDriection (e) {
-   const newDirection = e.keyCode;
+    if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) {
+        const newDirection = e.keyCode;
+        changeDirection = newDirection;
+    } else {
+        return
+    }
+    
+   
 
     if (!started) {
         started = true;
         setInterval(game, 1000/30);
     }
 
-   changeDirection = newDirection;
+    
+    
+   
 }
 
 function move() {

@@ -27,6 +27,8 @@ let snake = [
     {positionX: 16, positionY:19},
 ];
 
+let changeDirection = '';
+let started = false;
 
 function gameBoard () {
     ctx.fillStyle = boardColor;
@@ -59,18 +61,54 @@ function drawFood () {
     ctx.fillRect(x, y, size, size);
 }
 
+
+function checkDriection (e) {
+   const newDirection = e.keyCode;
+
+    if (!started) {
+        started = true;
+        setInterval(game, 1000/30);
+    }
+
+   changeDirection = newDirection;
+}
+
 function move() {
+    if(!started) return;
+
+    const  firstBlock = {...snake[0]};
+
+    if (changeDirection == '37') {
+        firstBlock.positionX -= 1;
+        console.log('left');
+    } else if (changeDirection == '38') {
+        firstBlock.positionY -= 1;
+        console.log('up');
+    } else if (changeDirection == '39') {
+        firstBlock.positionX += 1;
+        console.log('right');
+    } else if (changeDirection == '40') {
+        firstBlock.positionY += 1;
+        console.log('down');
+    } else {
+        return
+    }
+
+    snake.pop();
+
+    snake.unshift(firstBlock);
 
 }
 
 function game () {
 
     gameBoard();
-    drawFood();
-    // move();
+    // drawFood(); 
+    move();
     drawSnake();
 }
 
+document.addEventListener('keydown', checkDriection);
 
-game()
+game();
 

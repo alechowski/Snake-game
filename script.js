@@ -65,18 +65,22 @@ function drawFood () {
 function checkDriection (e) {
     if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) {
         const newDirection = e.keyCode;
-        changeDirection = newDirection;
+        const previousDirection = changeDirection;
+        
+
+        if ((newDirection === 37 && previousDirection !== 39) 
+            || (newDirection === 39 && previousDirection !== 37)
+            || (newDirection === 38 && previousDirection !== 40)
+            || (newDirection === 40 && previousDirection !== 38)){
+                if (!started) {
+                    started = true;
+                    setInterval(game, 1000/30);
+                }
+                changeDirection = newDirection;
+            }
     } else {
         return
     }
-    
-   
-
-    if (!started) {
-        started = true;
-        setInterval(game, 1000/30);
-    }
-
     
     
    
@@ -86,17 +90,18 @@ function move() {
     if(!started) return;
 
     const  firstBlock = {...snake[0]};
+    
 
-    if (changeDirection == '37') {
+    if (changeDirection === 37) {
         firstBlock.positionX -= 1;
         console.log('left');
-    } else if (changeDirection == '38') {
+    } else if (changeDirection === 38) {
         firstBlock.positionY -= 1;
         console.log('up');
-    } else if (changeDirection == '39') {
+    } else if (changeDirection === 39) {
         firstBlock.positionX += 1;
         console.log('right');
-    } else if (changeDirection == '40') {
+    } else if (changeDirection === 40) {
         firstBlock.positionY += 1;
         console.log('down');
     } else {

@@ -30,6 +30,8 @@ let snake = [
 let changeDirection = '';
 let started = false;
 
+let food = false;
+
 function gameBoard () {
     ctx.fillStyle = boardColor;
     ctx.fillRect(0,0,cw,ch);
@@ -55,10 +57,15 @@ function drawSnake () {
 }
 
 function drawFood () {
-    ctx.fillStyle = foodColor;
-    let x =  Math.round(Math.random() * columns) * 20
-    let y =  Math.round(Math.random() * rows) * 20
-    ctx.fillRect(x, y, size, size);
+    if (food === false){
+        ctx.fillStyle = foodColor;
+        let x =  Math.round(Math.random() * columns) * 20
+        let y =  Math.round(Math.random() * rows) * 20
+        ctx.fillRect(x, y, size, size);
+        food = true
+    } else {
+        return
+    }
 }
 
 
@@ -111,7 +118,7 @@ function move() {
 function game () {
 
     gameBoard();
-    // drawFood(); 
+    drawFood(); 
     move();
     drawSnake();
 }

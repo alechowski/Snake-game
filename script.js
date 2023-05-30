@@ -77,7 +77,7 @@ function drawFood () {
 }
 
 
-function checkDriection (e) {
+function checkDirection (e) {
     if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) {
         const newDirection = e.keyCode;
         const previousDirection = changeDirection;
@@ -131,7 +131,7 @@ function game () {
     drawSnake();
 }
 
-document.addEventListener('keydown', checkDriection);
+document.addEventListener('keydown', checkDirection);
 createFood();
 game();
 

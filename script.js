@@ -7,6 +7,8 @@ canvas.height = 640;
 const cw = canvas.width;
 const ch = canvas.height;
 
+let playGame;
+
 const size = 20;
 
 const columns = cw / 20;
@@ -89,7 +91,7 @@ function checkDirection (e) {
             || (newDirection === 40 && previousDirection !== 38)){
                 if (!started) {
                     started = true;
-                    setInterval(game, 1000/30);
+                    playGame;
                 }
                 changeDirection = newDirection;
             }
@@ -121,6 +123,24 @@ function move() {
 
     snake.unshift(firstBlock);
 
+
+}
+
+function colideBorder () {
+    const head = snake[0];
+     if ((head.positionX === -1 || head.positionX === columns) || (head.positionY === -1 || head.positionY === rows)){
+        alert('game over');
+        clearInterval(playGame);
+    }
+}
+
+// function colideBody () {
+// }
+
+function collisionEvent () {
+ colideBorder()
+ 
+
 }
 
 function game () {
@@ -129,9 +149,10 @@ function game () {
     drawFood(); 
     move();
     drawSnake();
+    collisionEvent()
 }
 
 document.addEventListener('keydown', checkDirection);
 createFood();
-game();
+playGame = setInterval(game, 1000/30);
 

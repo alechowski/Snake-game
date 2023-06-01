@@ -34,6 +34,9 @@ let started = false;
 
 let food;
 
+let foodPositionX;
+let foodPositionY;
+
 function gameBoard () {
     ctx.fillStyle = boardColor;
     ctx.fillRect(0,0,cw,ch);
@@ -62,6 +65,9 @@ function createFood () {
    
     const x =  Math.floor(Math.random() * columns) * size;
     const y =  Math.floor(Math.random() * rows) * size;
+
+    foodPositionX = x/20;
+    foodPositionY = y/20;
 
 
     food = {
@@ -143,6 +149,13 @@ function collisionEvent () {
 
 }
 
+function eatFood () {
+    const head = snake[0];
+    if (head.positionX == foodPositionX && head.positionY == foodPositionY) {
+        createFood();
+    }
+}
+
 function game () {
 
     gameBoard();
@@ -150,6 +163,7 @@ function game () {
     move();
     drawSnake();
     collisionEvent();
+    eatFood();
 }
 
 document.addEventListener('keydown', checkDirection);

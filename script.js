@@ -60,10 +60,10 @@ function drawSnake () {
 
 function createFood () {
    
-    let x =  Math.round(Math.random() * columns) * 20
-    let y =  Math.round(Math.random() * rows) * 20
+    const x =  Math.floor(Math.random() * columns) * size;
+    const y =  Math.floor(Math.random() * rows) * size;
 
-    
+
     food = {
           x: x,
           y: y,
@@ -149,7 +149,7 @@ function game () {
     drawFood(); 
     move();
     drawSnake();
-    collisionEvent()
+    collisionEvent();
 }
 
 document.addEventListener('keydown', checkDirection);

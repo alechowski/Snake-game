@@ -27,6 +27,11 @@ let snake = [
     {positionX: 16, positionY:17},
     {positionX: 16, positionY:18},
     {positionX: 16, positionY:19},
+    {positionX: 16, positionY:20},
+    {positionX: 16, positionY:21},
+    {positionX: 16, positionY:22},
+    {positionX: 16, positionY:23},
+    {positionX: 16, positionY:24},
 ];
 
 let changeDirection = '';
@@ -140,13 +145,21 @@ function colideBorder () {
     }
 }
 
-// function colideBody () {
-// }
+function colideBody () {
+    const snakeBody = [...snake];
+    const snakeHead = snakeBody.shift();
+
+    if (snakeBody.some(tail => tail.positionX === snakeHead.positionX && tail.positionY === snakeHead.positionY)){
+        alert('game over');
+        clearInterval(playGame);
+    }
+
+
+}
 
 function collisionEvent () {
- colideBorder()
- 
-
+    colideBorder()
+    colideBody()
 }
 
 function eatFood () {
@@ -168,5 +181,5 @@ function game () {
 
 document.addEventListener('keydown', checkDirection);
 createFood();
-playGame = setInterval(game, 1000/30);
+playGame = setInterval(game, 1000/10);
 

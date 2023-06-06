@@ -26,12 +26,6 @@ let snake = [
     {positionX: 16, positionY:16},
     {positionX: 16, positionY:17},
     {positionX: 16, positionY:18},
-    // {positionX: 16, positionY:19},
-    // {positionX: 16, positionY:20},
-    // {positionX: 16, positionY:21},
-    // {positionX: 16, positionY:22},
-    // {positionX: 16, positionY:23},
-    // {positionX: 16, positionY:24},
 ];
 
 let changeDirection = '';
@@ -143,7 +137,7 @@ function colideBorder () {
         alert('game over');
         clearInterval(playGame);
     }
-    
+
 }
 
 function colideBody () {

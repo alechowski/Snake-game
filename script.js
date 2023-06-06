@@ -26,12 +26,12 @@ let snake = [
     {positionX: 16, positionY:16},
     {positionX: 16, positionY:17},
     {positionX: 16, positionY:18},
-    {positionX: 16, positionY:19},
-    {positionX: 16, positionY:20},
-    {positionX: 16, positionY:21},
-    {positionX: 16, positionY:22},
-    {positionX: 16, positionY:23},
-    {positionX: 16, positionY:24},
+    // {positionX: 16, positionY:19},
+    // {positionX: 16, positionY:20},
+    // {positionX: 16, positionY:21},
+    // {positionX: 16, positionY:22},
+    // {positionX: 16, positionY:23},
+    // {positionX: 16, positionY:24},
 ];
 
 let changeDirection = '';
@@ -102,7 +102,7 @@ function checkDirection (e) {
             || (newDirection === 40 && previousDirection !== 38)){
                 if (!started) {
                     started = true;
-                    playGame;
+                    playGame = setInterval(game, 1000/10);;
                 }
                 changeDirection = newDirection;
             }
@@ -130,7 +130,7 @@ function move() {
         return
     }
 
-    snake.pop();
+
 
     snake.unshift(firstBlock);
 
@@ -143,6 +143,7 @@ function colideBorder () {
         alert('game over');
         clearInterval(playGame);
     }
+    
 }
 
 function colideBody () {
@@ -153,7 +154,6 @@ function colideBody () {
         alert('game over');
         clearInterval(playGame);
     }
-
 
 }
 
@@ -166,20 +166,31 @@ function eatFood () {
     const head = snake[0];
     if (head.positionX == foodPositionX && head.positionY == foodPositionY) {
         createFood();
+    }else {
+        snake.pop();
     }
+}
+
+function startingView () {
+    
+    gameBoard();
+    createFood();
+    drawFood(); 
+    drawSnake();
 }
 
 function game () {
 
     gameBoard();
     drawFood(); 
+    eatFood();
     move();
     drawSnake();
     collisionEvent();
-    eatFood();
 }
 
-document.addEventListener('keydown', checkDirection);
-createFood();
-playGame = setInterval(game, 1000/10);
 
+
+
+startingView()
+document.addEventListener('keydown', checkDirection);

@@ -62,18 +62,35 @@ function drawSnake () {
 
 function createFood () {
    
-    const x =  Math.floor(Math.random() * columns) * size;
-    const y =  Math.floor(Math.random() * rows) * size;
-
-    foodPositionX = x/20;
-    foodPositionY = y/20;
+    let x =  Math.floor(Math.random() * columns) * size;
+    let y =  Math.floor(Math.random() * rows) * size;
 
 
     food = {
           x: x,
           y: y,
       }
+    
+      
+    foodPositionX = food.x / 20;
+    foodPositionY = food.y / 20;
+    // foodPositionX = 16;
+    // foodPositionY = 17;
+      
+    if (snake.some(body => body.positionX === foodPositionX && body.positionY === foodPositionY)) {
 
+        x =  Math.floor(Math.random() * columns) * size;
+        y =  Math.floor(Math.random() * rows) * size;
+
+
+        food = {
+            x: x,
+            y: y,
+        }
+
+        foodPositionX = food.x / 20;
+        foodPositionY = food.y / 20;
+    }
 }
 
 function drawFood () {

@@ -136,6 +136,8 @@ function colideBorder () {
      if ((head.positionX === -1 || head.positionX === columns) || (head.positionY === -1 || head.positionY === rows)){
         alert('game over');
         clearInterval(playGame);
+    } else {
+        return
     }
 
 }
@@ -147,6 +149,8 @@ function colideBody () {
     if (snakeBody.some(tail => tail.positionX === snakeHead.positionX && tail.positionY === snakeHead.positionY)){
         alert('game over');
         clearInterval(playGame);
+    } else {
+        return
     }
 
 }

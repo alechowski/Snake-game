@@ -74,8 +74,6 @@ function createFood () {
       
     foodPositionX = food.x / 20;
     foodPositionY = food.y / 20;
-    // foodPositionX = 16;
-    // foodPositionY = 17;
       
     if (snake.some(body => body.positionX === foodPositionX && body.positionY === foodPositionY)) {
 

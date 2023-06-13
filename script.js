@@ -103,6 +103,10 @@ function checkDirection (e) {
     if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) {
         const newDirection = e.keyCode;
         const previousDirection = changeDirection;
+
+        if (!started && newDirection === 40) {
+            return
+        }
         
 
         if ((newDirection === 37 && previousDirection !== 39) 

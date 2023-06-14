@@ -1,5 +1,6 @@
 const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext("2d");
+const displayScore = document.querySelector('.lenght')
 
 canvas.width = 640;
 canvas.height = 640;
@@ -184,6 +185,12 @@ function eatFood () {
     }
 }
 
+function snakeLength () {
+    const score = snake.length - 3;
+    displayScore.textContent = score;
+
+}
+
 function startingView () {
     
     gameBoard();
@@ -200,6 +207,7 @@ function game () {
     move();
     drawSnake();
     collisionEvent();
+    snakeLength();
 }
 
 

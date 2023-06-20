@@ -4,6 +4,7 @@ const displayScore = document.querySelector('.length')
 const gameOverScore = document.querySelector('.score')
 const bestResult = document.querySelector('.best')
 const gameOver = document.querySelector('.game-over__popup')
+const restarBtn = document.querySelector('.restart-btn')
 
 canvas.width = 640;
 canvas.height = 640;
@@ -211,6 +212,8 @@ function gameOverResult () {
     bestResult.textContent = highestScore;
 }
 
+
+
 function startingView () {
     
     gameBoard();
@@ -231,7 +234,20 @@ function game () {
 }
 
 
+function restartGame() {
+    gameOver.style.opacity = '0';
+    snake = [
+        {positionX: 16, positionY:16},
+        {positionX: 16, positionY:17},
+        {positionX: 16, positionY:18},
+    ];
+    started = false;
+    startingView();
+
+}
+
 
 
 startingView()
 document.addEventListener('keydown', checkDirection);
+restarBtn.addEventListener('click', restartGame);

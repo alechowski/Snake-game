@@ -8,19 +8,23 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-    
+    <main class="main">
+        <canvas id="canvas"></canvas>
+        
+        
+        <div class="game-over__popup">
+            <div class="game-over__card">
+                <div class="game-over__information"><p class="information">game over!</p></div>
+                <div class="game-over__score"><p>Your Score: <span class="length">0</span></p></div>
+                <div class="game-over__best-score"><p>Best Score: <span class="best">0</span></p></div>
+                <button class="restart-btn">Play Again</button>
+            </div>
+        </div>
+    </main>
     <div class="scores">
-        <div class="current-score"><p>Length: <span class="length">0</span></p></div>
-        <div class="best-score"><p>Best: <span class="best">0</span></p></div>
-    </div>
-
-    <div class="game-over__popup">
-        <div class="game-over__information"><p class="information">game over!</p></div>
-        <div class="game-over__score"><p>Your Score: <span class="length">0</span></p></div>
-        <div class="game-over__best-score"><p>Best Score: <span class="best">0</span></p></div>
-        <button class="restart-btn">Play Again</button>
-    </div>
+            <div class="current-score"><p>Length: <span class="length">0</span></p></div>
+            <div class="best-score"><p>Best: <span class="best">0</span></p></div>
+        </div>
     <script src="./script.js"></script>
 </body>
 </html>

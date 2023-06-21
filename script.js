@@ -1,6 +1,10 @@
 const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext("2d");
 const displayScore = document.querySelector('.length')
+const gameOverScore = document.querySelector('.score')
+const bestResult = document.querySelector('.best')
+const gameOver = document.querySelector('.game-over__popup')
+const restarBtn = document.querySelector('.restart-btn')
 
 canvas.width = 640;
 canvas.height = 640;
@@ -36,6 +40,11 @@ let food;
 
 let foodPositionX;
 let foodPositionY;
+
+let score = 0;
+let highestScore = 0 || localStorage.getItem('personal-best');
+
+bestResult.textContent = highestScore;
 
 function gameBoard () {
     ctx.fillStyle = boardColor;
@@ -154,8 +163,8 @@ function move() {
 function colideBorder () {
     const head = snake[0];
      if ((head.positionX === -1 || head.positionX === columns) || (head.positionY === -1 || head.positionY === rows)){
-        alert('game over');
         clearInterval(playGame);
+        gameOverResult ();
     } else {
         return
     }
@@ -167,8 +176,8 @@ function colideBody () {
     const snakeHead = snakeBody.shift();
 
     if (snakeBody.some(tail => tail.positionX === snakeHead.positionX && tail.positionY === snakeHead.positionY)){
-        alert('game over');
         clearInterval(playGame);
+        gameOverResult ();
     } else {
         return
     }
@@ -190,10 +199,20 @@ function eatFood () {
 }
 
 function snakeLength () {
-    const score = snake.length - 3;
+    score = snake.length - 3;
     displayScore.textContent = score;
 
 }
+
+function gameOverResult () {
+    gameOver.style.opacity = '1';
+    gameOverScore.textContent = score;
+    highestScore = Math.max(score, highestScore);
+    localStorage.setItem('personal-best', highestScore);
+    bestResult.textContent = highestScore;
+}
+
+
 
 function startingView () {
     
@@ -210,12 +229,25 @@ function game () {
     eatFood();
     move();
     drawSnake();
-    collisionEvent();
     snakeLength();
+    collisionEvent();
 }
 
+
+function restartGame() {
+    gameOver.style.opacity = '0';
+    snake = [
+        {positionX: 16, positionY:16},
+        {positionX: 16, positionY:17},
+        {positionX: 16, positionY:18},
+    ];
+    started = false;
+    startingView();
+
+}
 
 
 
 startingView()
 document.addEventListener('keydown', checkDirection);
+restarBtn.addEventListener('click', restartGame);

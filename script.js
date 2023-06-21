@@ -42,7 +42,7 @@ let foodPositionX;
 let foodPositionY;
 
 let score = 0;
-let highestScore = 0 || localStorage.getItem('personal-best');
+let highestScore = localStorage.getItem('personal-best') || 0;
 
 bestResult.textContent = highestScore;
 

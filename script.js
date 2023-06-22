@@ -3,7 +3,8 @@ const ctx = canvas.getContext("2d");
 const displayScore = document.querySelector('.length')
 const gameOverScore = document.querySelector('.score')
 const bestResult = document.querySelector('.best')
-const gameOver = document.querySelector('.game-over__popup')
+const gameOverPopup = document.querySelector('.game-over__popup')
+const gameOverCard = document.querySelector('.game-over__card')
 const restarBtn = document.querySelector('.restart-btn')
 
 canvas.width = 640;
@@ -125,7 +126,7 @@ function checkDirection (e) {
             || (newDirection === 40 && previousDirection !== 38)){
                 if (!started) {
                     started = true;
-                    playGame = setInterval(game, 1000/10);;
+                    playGame = setInterval(game, 1000/10);
                 }
                 changeDirection = newDirection;
             }
@@ -205,11 +206,13 @@ function snakeLength () {
 }
 
 function gameOverResult () {
-    gameOver.style.opacity = '1';
+    gameOverPopup.style.opacity = '1';
     gameOverScore.textContent = score;
     highestScore = Math.max(score, highestScore);
     localStorage.setItem('personal-best', highestScore);
     bestResult.textContent = highestScore;
+    gameOverCard.style.display = 'flex'
+
 }
 
 
@@ -220,6 +223,7 @@ function startingView () {
     createFood();
     drawFood(); 
     drawSnake();
+    snakeLength();
 }
 
 function game () {
@@ -235,15 +239,16 @@ function game () {
 
 
 function restartGame() {
-    gameOver.style.opacity = '0';
+    gameOverPopup.style.opacity = '0';
+    gameOverCard.style.display = 'none';
     snake = [
         {positionX: 16, positionY:16},
         {positionX: 16, positionY:17},
         {positionX: 16, positionY:18},
     ];
+    changeDirection = ''
     started = false;
-    startingView();
-
+    startingView();  
 }
 
 

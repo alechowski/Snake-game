@@ -18,7 +18,7 @@
 
 
 ## Room for Improvement
- - In the near future, I plan to refactor this project to be more object-oriented and potentially work on improving the graphical aspects.
+ - In the near future, I plan to simplify the code and potentially work on improving the graphical aspects.
 
 
 ---

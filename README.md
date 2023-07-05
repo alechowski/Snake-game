@@ -18,8 +18,10 @@
 
 
 ## Room for Improvement
- - In the near future, I plan to simplify the code and potentially work on improving the graphical aspects.
-
+In the near future, I plan to:
+- Simplify the code
+- Implement different difficulty levels
+- Potentially work on improving the graphical aspects
 
 ---
 <p align="center" width="100%">

@@ -1,6 +1,4 @@
 # Snake-game
-
-# Calculator
  
 > Here is a working live [_demo_](https://alechowski.github.io/Snake-game/).
 
